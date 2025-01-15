@@ -1,0 +1,26 @@
+---
+- name: Manage Python Service
+  hosts: all
+  become: yes
+  tasks:
+    - name: Copy systemd service file
+      copy:
+        src: python_alive_service.service
+        dest: /etc/systemd/system/python_alive_service.service
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Reload systemd daemon
+      systemd:
+        daemon_reload: yes
+
+    - name: Enable the service to start on boot
+      systemd:
+        name: python_alive_service
+        enabled: yes
+
+    - name: Start the service
+      systemd:
+        name: python_alive_service
+        state: started

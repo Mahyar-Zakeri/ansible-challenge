@@ -1,0 +1,8 @@
+[Unit]
+Description=Ansible Challenge Service
+
+[Service]
+ExecStart=/usr/bin/python3 -u /home/mahyar/PycharmProjects/ansible-challenge/main.py
+WorkingDirectory=/home/mahyar/PycharmProjects/ansible-challenge
+Restart=always
+User=root
